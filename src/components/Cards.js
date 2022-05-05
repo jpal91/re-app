@@ -8,23 +8,24 @@ import {
   Grid,
   Typography
 } from "@mui/material";
+import { connect } from "react-redux";
 
-const Cards = () => {
+const Cards = (props) => {
   return (
     <div>
-      <Card sx={{ maxWidth: 400 }}>
-        <CardHeader title="Test" subheader="subtest" />
+      <Card sx={{ maxWidth: 400, minWidth: 400, height: 410 }}>
+        <CardHeader title={props.add}  />
         <CardMedia
           component="img"
           height="200"
           width="300"
-          src="src/media/photo.jpg"
+          src={props.pic ? props.pic : null}
         />
         <CardContent>
           <Grid container spacing={2}>
             <Grid
               item
-              xs={7}
+              xs={6}
               sx={{
                 display: "flex",
                 flexDirection: "column",
@@ -35,18 +36,18 @@ const Cards = () => {
                 List Price:
                 <Typography component="span" variant="h6" color="primary.light">
                   {" "}
-                  345000
+                  {props.lp.toLocaleString()}
                 </Typography>
               </Typography>
               <Typography variant="h6">
-                EV:
+                {props.ev ? 'EV:' : ''}
                 <Typography component="span" variant="h6" color="success.light">
                   {" "}
-                  345000
+                  {props.ev ? props.ev.toLocaleString() : ''}
                 </Typography>
               </Typography>
             </Grid>
-            <Grid container item xs={5}>
+            <Grid container item xs={6}>
               <Grid
                 item
                 xs={8}
@@ -56,16 +57,16 @@ const Cards = () => {
                   alignItems: "flex-start"
                 }}
               >
-                <Typography variant="body1">Beds</Typography>
-                <Typography variant="body1">Baths</Typography>
+                <Typography variant="body1">{props.beds ? 'Beds' : ''}</Typography>
+                <Typography variant="body1">{props.baths ? 'Baths' : ''}</Typography>
                 <Typography variant="body1">Sqft</Typography>
                 <Typography variant="body1">Listed Date</Typography>
               </Grid>
               <Grid item xs={4}>
-                <Typography variant="body1">4</Typography>
-                <Typography variant="body1">2</Typography>
-                <Typography variant="body1">2000</Typography>
-                <Typography variant="body1">4/28</Typography>
+                <Typography variant="body1">{props.beds || ''}</Typography>
+                <Typography variant="body1">{props.baths || ''}</Typography>
+                <Typography variant="body1">{props.sqft ? props.sqft.toLocaleString() : ''}</Typography>
+                <Typography variant="body1">{props.ld}</Typography>
               </Grid>
             </Grid>
           </Grid>
@@ -75,4 +76,10 @@ const Cards = () => {
   );
 };
 
-export default Cards;
+const mapStateToProps = (state) => {
+  return {
+    homes: state.homes
+  }
+}
+
+export default connect(mapStateToProps)(Cards);

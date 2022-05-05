@@ -1,3 +1,11 @@
 import { combineReducers } from "redux";
 
-export default combineReducers({});
+import homes from './homes'
+import land from './land'
+import under from './under'
+
+export default combineReducers({
+    homes: homes,
+    land: land,
+    under: under,
+});
