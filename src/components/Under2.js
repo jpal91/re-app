@@ -27,7 +27,7 @@ const Under2 = (props) => {
                         baths={home.baths}
                         sqft={home.sqft}
                         ld={`${month + 1 }/${day + 1}`}
-                        
+                        link={`/prop/${parseInt(home.prop_id)}`}
                     />
                 </Grid>
             )

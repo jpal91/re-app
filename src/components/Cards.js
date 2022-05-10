@@ -9,18 +9,21 @@ import {
   Typography
 } from "@mui/material";
 import { connect } from "react-redux";
+import { Link } from 'react-router-dom'
 
 const Cards = (props) => {
   return (
     <div>
       <Card sx={{ maxWidth: 400, minWidth: 400, height: 410 }}>
         <CardHeader title={props.add}  />
-        <CardMedia
-          component="img"
-          height="200"
-          width="300"
-          src={props.pic ? props.pic : null}
-        />
+        <Link to={props.link ? props.link : null} >
+          <CardMedia
+            component="img"
+            height="200"
+            width="300"
+            src={props.pic ? props.pic : null}
+          />
+        </Link>
         <CardContent>
           <Grid container spacing={2}>
             <Grid

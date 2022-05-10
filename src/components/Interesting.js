@@ -28,6 +28,7 @@ const Interesting = (props) => {
                         sqft={home.sqft}
                         ld={`${month + 1 }/${day + 1}`}
                         ev={avm}
+                        link={`/prop/${parseInt(home.prop_id)}`}
                     />
                 </Grid>
             )

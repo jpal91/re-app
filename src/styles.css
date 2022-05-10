@@ -6,3 +6,11 @@
 body > iframe {
   pointer-events: none;
 }
+
+#next {
+  background-color: red;
+}
+
+#back {
+  background-color: red;
+}

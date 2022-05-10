@@ -25,6 +25,7 @@ const Land = (props) => {
                         pic={home.pic || null}
                         sqft={home.lot_sf}
                         ld={`${month + 1 }/${day + 1}`}
+                        link={`/prop/${parseInt(home.prop_id)}`}
                     />
                 </Grid>
             )

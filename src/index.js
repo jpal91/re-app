@@ -5,11 +5,13 @@ import { createStore, applyMiddleware, compose } from "redux";
 import reduxThunk from "redux-thunk";
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
+
 import App from "./App";
 import reducers from "./reducers";
 import Interesting from "./components/Interesting";
 import Land from "./components/Land";
 import Under2 from "./components/Under2";
+import PropInfo from "./components/PropInfo";
 
 const rootElement = document.getElementById("root");
 const root = createRoot(rootElement);
@@ -29,6 +31,7 @@ root.render(
           <Route path='/' element={<App />} >
             <Route path='/land' element={<Land />} />
             <Route path='/under' element={<Under2 />} />
+            <Route path='/prop/:id' element={<PropInfo />} />
             <Route index element={<Interesting />} />
           </Route>
         </Routes>
