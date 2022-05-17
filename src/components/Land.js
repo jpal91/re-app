@@ -4,49 +4,48 @@ import CardHolder from "./CardHolder";
 import { Grid } from "@mui/material";
 
 import { getHomes } from "../actions";
-import Cards from './Cards'
+import Cards from "./Cards";
 
 const Land = (props) => {
-    const getCards = () => {
-        if (props.land.length === 0) {
-            return
-        }
-
-        return props.land.map((home) => {
-            let date = new Date(home.temp.listed)
-            let month = date.getMonth()
-            let day = date.getDay()
-            
-            return (
-                <Grid item key={home.temp.prop_id}>
-                    <Cards 
-                        add={`${home.temp.strt}, ${home.temp.city}, ${home.temp.state} ${home.temp.zip}` || null}
-                        lp={home.temp.l_price}
-                        pic={home.temp.pic || null}
-                        sqft={home.temp.lot_sf}
-                        ld={`${month + 1 }/${day + 1}`}
-                        link={`/prop/${parseInt(home.temp.prop_id)}`}
-                    />
-                </Grid>
-            )
-        })
+  const getCards = () => {
+    if (props.land.length === 0) {
+      return;
     }
 
-    useEffect(() => {
-        props.getHomes('land')
-    }, [])
+    return props.land.map((home) => {
+      let date = new Date(home.temp.listed);
+      let month = date.getMonth();
+      let day = date.getDate();
 
-    return (
-        <CardHolder 
-            getCards={getCards()}
-        />
-    )
-}
+      return (
+        <Grid item key={home.temp.prop_id}>
+          <Cards
+            add={
+              `${home.temp.strt}, ${home.temp.city}, ${home.temp.state} ${home.temp.zip}` ||
+              null
+            }
+            lp={home.temp.l_price}
+            pic={home.temp.pic || null}
+            sqft={home.temp.lot_sf}
+            ld={`${month + 1}/${day + 1}`}
+            link={`/prop/${parseInt(home.temp.prop_id)}`}
+          />
+        </Grid>
+      );
+    });
+  };
+
+  useEffect(() => {
+    props.getHomes("land");
+  }, []);
+
+  return <CardHolder getCards={getCards()} />;
+};
 
 const mapStateToProps = (state) => {
-    return {
-        land: state.land
-    }
-}
+  return {
+    land: state.land
+  };
+};
 
-export default connect(mapStateToProps, { getHomes })(Land)
+export default connect(mapStateToProps, { getHomes })(Land);
