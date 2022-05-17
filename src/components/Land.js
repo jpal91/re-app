@@ -12,7 +12,11 @@ const Land = (props) => {
       return;
     }
 
-    return props.land.map((home) => {
+    let list = props.land.sort(
+      (a, b) => new Date(b.temp.listed) - new Date(a.temp.listed)
+    );
+
+    return list.map((home) => {
       let date = new Date(home.temp.listed);
       let month = date.getMonth();
       let day = date.getDate();
@@ -27,7 +31,7 @@ const Land = (props) => {
             lp={home.temp.l_price}
             pic={home.temp.pic || null}
             sqft={home.temp.lot_sf}
-            ld={`${month + 1}/${day + 1}`}
+            ld={`${month + 1}/${day}`}
             link={`/prop/${parseInt(home.temp.prop_id)}`}
           />
         </Grid>

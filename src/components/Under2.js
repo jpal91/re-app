@@ -12,7 +12,11 @@ const Under2 = (props) => {
       return;
     }
 
-    return props.under.map((home) => {
+    let list = props.under.sort(
+      (a, b) => new Date(b.temp.listed) - new Date(a.temp.listed)
+    );
+
+    return list.map((home) => {
       let date = new Date(home.temp.listed);
       let month = date.getMonth();
       let day = date.getDate();
@@ -26,7 +30,7 @@ const Under2 = (props) => {
             beds={home.temp.beds}
             baths={home.temp.baths}
             sqft={home.temp.sqft}
-            ld={`${month + 1}/${day + 1}`}
+            ld={`${month + 1}/${day}`}
             link={`/prop/${parseInt(home.temp.prop_id)}`}
           />
         </Grid>
