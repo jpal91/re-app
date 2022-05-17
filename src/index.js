@@ -11,7 +11,10 @@ import reducers from "./reducers";
 import Interesting from "./components/Interesting";
 import Land from "./components/Land";
 import Under2 from "./components/Under2";
-import PropInfo from "./components/PropInfo";
+import PropInfo from "./components/deprecated/PropInfo";
+import PropInfov2 from "./components/PropInfov2";
+import Multi from "./components/Multi";
+import Keywords from "./components/Keywords";
 
 const rootElement = document.getElementById("root");
 const root = createRoot(rootElement);
@@ -31,7 +34,9 @@ root.render(
           <Route path='/' element={<App />} >
             <Route path='/land' element={<Land />} />
             <Route path='/under' element={<Under2 />} />
-            <Route path='/prop/:id' element={<PropInfo />} />
+            <Route path='/multi' element={<Multi />} />
+            <Route path='/keywords' element={<Keywords />} />
+            <Route path='/prop/:id' element={<PropInfov2 />} />
             <Route index element={<Interesting />} />
           </Route>
         </Routes>

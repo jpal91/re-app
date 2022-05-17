@@ -28,7 +28,7 @@ const GlobalNav = (props) => {
             
             if (location.pathname.includes('prop') && params.id !== 'undefined') {
                 handleChange(null, location.pathname)
-                props.setLast(location.pathname)
+                //props.setLast(location.pathname)
                 setDis(false)
             } else {
                 handleChange(null, location.pathname)
@@ -53,6 +53,8 @@ const GlobalNav = (props) => {
                 <Tab value='/' label='Interesting' />
                 <Tab  value='/land' label='Land' />
                 <Tab  value='/under' label='Under 200' />
+                <Tab value='/multi' label='Multi' />
+                <Tab value='/keywords' label='Keywords' />
                 <Tab  value={`/prop/${params.id}`} label='Prop Info' disabled={dis}/>
             </Tabs>
             

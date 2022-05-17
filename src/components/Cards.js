@@ -11,6 +11,8 @@ import {
 import { connect } from "react-redux";
 import { Link } from 'react-router-dom'
 
+import PopperSimp from "./tools/PopperSimp";
+
 const Cards = (props) => {
   return (
     <div>
@@ -49,6 +51,7 @@ const Cards = (props) => {
                   {props.ev ? props.ev.toLocaleString() : ''}
                 </Typography>
               </Typography>
+              {props.keyword ? <PopperSimp id='popper1' kw={props.keyword}/> : ''}
             </Grid>
             <Grid container item xs={6}>
               <Grid
@@ -62,8 +65,8 @@ const Cards = (props) => {
               >
                 <Typography variant="body1">{props.beds ? 'Beds' : ''}</Typography>
                 <Typography variant="body1">{props.baths ? 'Baths' : ''}</Typography>
-                <Typography variant="body1">Sqft</Typography>
-                <Typography variant="body1">Listed Date</Typography>
+                <Typography variant="body1">{props.sqft ? 'Sqft' : ''}</Typography>
+                <Typography variant="body1">{props.ld ? 'Listed Date' : ''}</Typography>
               </Grid>
               <Grid item xs={4}>
                 <Typography variant="body1">{props.beds || ''}</Typography>

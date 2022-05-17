@@ -5,11 +5,15 @@ import land from './land'
 import under from './under'
 import deets from './propdeets'
 import last from './last'
+import multi from './multi'
+import keywords from "./keywords";
 
 export default combineReducers({
     homes: homes,
     land: land,
     under: under,
     deets: deets,
-    last: last
+    last: last,
+    multi: multi,
+    keywords: keywords
 });
