@@ -37,7 +37,7 @@ const PropInfo = (props) => {
     return (
       <React.Fragment>
         <Container fixed sx={{ width: 1200, maxHeight: 400 }}>
-          <Pics photos={props.deets.full.photos} />
+          <Picsv2 photos={props.deets.full.photos} />
         </Container>
         <br />
         <Grid container my={2}>
