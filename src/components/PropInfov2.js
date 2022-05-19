@@ -1,11 +1,10 @@
-import { Container, Grid } from "@mui/material";
+import { Container, Grid, Box, LinearProgress } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { useParams, useLocation } from "react-router-dom";
 
 import { getProp, setLast } from "../actions";
-import Pics from "./propcomps/Pics";
-import Picsv2 from "./propcomps/Picsv2";
+import Picsv3 from "./propcomps/Picsv3";
 import Features from "./propcomps/Features";
 import Address from "./propcomps/Address";
 import FeaturesPt2 from "./propcomps/FeaturesPt2";
@@ -36,8 +35,8 @@ const PropInfo = (props) => {
     console.log(props.deets);
     return (
       <React.Fragment>
-        <Container fixed sx={{ width: 1200, maxHeight: 400 }}>
-          <Picsv2 photos={props.deets.full.photos} />
+        <Container fixed sx={{ width: 1200, maxHeight: 700 }}>
+          <Picsv3 photos={props.deets.full.photos ? props.deets.full.photos : []} />
         </Container>
         <br />
         <Grid container my={2}>
@@ -90,7 +89,11 @@ const PropInfo = (props) => {
       return;
     }
 
-    return <div>Loading...</div>;
+    return (
+      <Box sx={{ width: '80%' }}>
+        <LinearProgress />
+      </Box>
+    );
   };
 
   return (

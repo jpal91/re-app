@@ -18,7 +18,7 @@ const Keywords = (props) => {
       let date = new Date(home.temp.listed);
       let month = date.getMonth();
       let day = date.getDate();
-      console.log(day);
+      
       let avm =
         home.avm.corelogic || home.avm.quantarium || home.avm.collateral;
       let kw = home.int.keywords.map((k) => {

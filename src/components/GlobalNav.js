@@ -6,14 +6,12 @@ import { connect } from "react-redux";
 import { setLast } from "../actions";
 
 
+
 const GlobalNav = (props) => {
     const navigate = useNavigate()
     const location = useLocation()
-    const params = useParams()
     
     const [value, setValue] = useState(location.pathname)
-    //const [last, setLast] = useState(null)
-    const [dis, setDis] = useState(true)
     
     const handleChange = (event, newValue) => {
         setValue(newValue)
@@ -23,24 +21,13 @@ const GlobalNav = (props) => {
     }
 
     useEffect(() => {
-        
-        if (location.pathname !== value) {
-            
-            if (location.pathname.includes('prop') && params.id !== 'undefined') {
-                handleChange(null, location.pathname)
-                //props.setLast(location.pathname)
-                setDis(false)
-            } else {
-                handleChange(null, location.pathname)
-            }
-        } 
-        
-        if (location.pathname.includes('prop') && params.id === 'undefined') {
-                handleChange(null, props.last)
+
+        if (props.last === location.pathname) {
+            setValue(props.last)
         }
         
        
-    }, [location])
+    }, [location, props.last])
 
     return (
         <React.Fragment>
@@ -52,10 +39,10 @@ const GlobalNav = (props) => {
             >
                 <Tab value='/' label='Interesting' />
                 <Tab  value='/land' label='Land' />
-                <Tab  value='/under' label='Under 200' />
+                <Tab  value='/under' label='Under 300' />
                 <Tab value='/multi' label='Multi' />
                 <Tab value='/keywords' label='Keywords' />
-                <Tab  value={`/prop/${params.id}`} label='Prop Info' disabled={dis}/>
+                <Tab  value={`${props.last}`} label='Prop Info' disabled={props.last === null ? true : false}/>
             </Tabs>
             
         </React.Fragment>
